@@ -11,7 +11,7 @@ const NO_TEXTS = [
   "Okay...Click Yes 😂"
 ];
 
-const Proposal = ({ onAccept }) => {
+const Proposal = ({ onAccept, isSubmitting = false }) => {
   const [noCount, setNoCount] = useState(0);
   const [noPosition, setNoPosition] = useState({ x: 0, y: 0 });
 
@@ -37,7 +37,7 @@ const Proposal = ({ onAccept }) => {
 
   return (
     <motion.div 
-      className="relative z-10 flex flex-col items-center justify-center p-8 bg-white/80 backdrop-blur-md rounded-3xl shadow-xl w-[90%] max-w-md mx-auto"
+      className="relative z-10 flex flex-col items-center justify-center p-8 bg-white/80 backdrop-blur-md rounded-3xl shadow-xl w-full max-w-md m-auto"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -62,13 +62,14 @@ const Proposal = ({ onAccept }) => {
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
         <motion.button
-          className="bg-rose-500 text-white font-bold rounded-full shadow-lg hover:bg-rose-600 transition-colors flex-shrink-0"
+          className={`bg-rose-500 text-white font-bold rounded-full shadow-lg transition-colors flex-shrink-0 whitespace-nowrap ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-rose-600'}`}
           style={{ fontSize: yesButtonSize, padding: `${yesButtonSize / 2}px ${yesButtonSize}px` }}
-          onClick={onAccept}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          onClick={isSubmitting ? undefined : onAccept}
+          disabled={isSubmitting}
+          whileHover={isSubmitting ? undefined : { scale: 1.05 }}
+          whileTap={isSubmitting ? undefined : { scale: 0.95 }}
         >
-          ❤️ Yes
+          {isSubmitting ? 'Just a second...' : '❤️ Yes'}
         </motion.button>
         
         <motion.button
