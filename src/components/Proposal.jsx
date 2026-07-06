@@ -50,6 +50,9 @@ const Proposal = ({ onAccept }) => {
         />
       </div>
       
+      <h1 className="text-xl/tight sm:text-3xl font-bold text-gray-800 text-center mb-2">
+        Hey Jeni,
+      </h1>
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 text-center mb-2">
         Will you come to travel with me in life? ❤️
       </h1>
