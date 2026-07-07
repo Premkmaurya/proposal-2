@@ -73,7 +73,7 @@ const Proposal = ({ onAccept, isSubmitting = false }) => {
         </motion.button>
         
         <motion.button
-          className="bg-gray-200 text-gray-700 font-bold rounded-full shadow hover:bg-gray-300 flex-shrink-0 absolute sm:relative"
+          className="bg-gray-200 text-gray-700 font-bold rounded-full shadow hover:bg-gray-300 flex-shrink-0 relative"
           style={{ 
             fontSize: noButtonSize, 
             padding: `${noButtonSize / 2}px ${noButtonSize}px`,
